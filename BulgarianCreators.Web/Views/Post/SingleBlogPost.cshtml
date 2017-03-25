@@ -1,0 +1,105 @@
+﻿@model PostViewModel
+@{
+    ViewBag.Title = "SingleBlogPost";
+}
+
+<section class="pattern-3 no-padding-right">
+    <!-- .container -->
+    <div class="container">
+        <!-- .row -->
+        <div class="row">
+            <!-- .col-md-12 -->
+            <div class="col-md-12">
+                <!-- All blog posts -->
+                <div class="mar-top-lg row">
+                    <!-- Left part -->
+                    <div class="col-md-12 blog-main">
+                        <div class="post-detail sep-bottom-lg">
+                            <figure class="no-margin">
+                                @if (Model.ImageUrl == string.Empty)
+                                {
+                                    <img src="~/images/blog/detail-5.jpg" alt="" class="img-responsive" />
+                                }
+                                else
+                                {
+                                    <img src="@Model.ImageUrl" alt="" class="img-responsive" />
+                                }
+
+                            </figure>
+                            <div class="post-detail-body sep-xs">
+                                <h3 class="text-uppercase">@Model.Title</h3>
+                                <span class="line-sep-gray"></span>
+                                <p>
+                                    <span class="letter-dropcap"> @Model.Content.Substring(0, 1)</span>
+                                    @Model.Content.Substring(1)
+                                </p>
+                                <ul class="post-info pull-left">
+                                    <li><i class="iline2-round27 text-primary"></i> <a href="#">@Model.PostedOn.ToShortDateString()</a></li>
+                                    <li><i class="iline2-rectangular22 text-success"></i> <a href="#">@Model.Comments.Count</a></li>
+                                    <li><i class="iline2-heart64"></i> <a href="#">@Model.UserLikes.Count</a></li>
+                                    <li><i class="iline1-gender2"></i><a href="#">@Model.PostedBy</a></li>
+                                </ul>
+                                <span class="clearboth">
+                                </span>
+                            </div>
+                        </div>
+
+
+                        <div class="post-detail mar-top-xs">
+                            <div class="post-detail-body sep-xs">
+                                <h3>Comments</h3>
+                                @if (Model.Comments.Count == 0)
+                                {
+                                    <div class="media-body">
+                                        <p>
+                                            No Comments for this post.
+                                        </p>
+                                    </div>
+                                }
+                                else
+                                {
+                                    foreach (var comment in Model.Comments)
+                                    {
+                                        <span class="line-sep-gray"></span>
+                                        <ul class="media-list">
+                                            <li class="media">
+                                                <div class="media-left">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading text-primary">@comment.PostedBy Pesho<span class="pull-right small text-muted"><i>@comment.PostedOn</i></span></h4>
+                                                    <p>
+                                                        @comment.commentBody
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    }
+                                }
+
+                                <h4 class="mar-top-md">Add a comment.</h4>
+                                <span class="line-sep-gray"></span>
+                                <form class="form-horizontal mar-top-sm wow fadeIn" data-wow-duration="1s" data-wow-delay=".3s" method="post" action="/" name="commentForm" novalidate="">
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="form-group control-group">
+                                                <textarea class="form-control" name="comment" placeholder="Comment* :" required="" data-validation-required-message="Please enter a Text."></textarea>
+                                                <p class="help-block"></p>
+                                            </div>
+                                            <button type="submit" class="submit btn btn-primary pull-right">Post</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.row -->
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Left part -->
+                </div>
+            </div>
+            <!-- /.col-md-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
+<!-- BLOG POST BODY SECTION END -->
