@@ -69,11 +69,11 @@ namespace BulgarianCreators.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<ICreatorsDbContext>()
+            kernel.Bind(typeof(ICreatorsDbContext), typeof(ICreatorsDbSaveChangesContext))
                 .To<CreatorsDbContext>().InRequestScope();
 
-            kernel.Bind(typeof(ICreatorsDbSaveChangesContext))
-                .To<CreatorsDbContext>().InRequestScope();
+            //kernel.Bind(typeof(ICreatorsDbSaveChangesContext))
+            //    .To<CreatorsDbContext>().InRequestScope();
 
             kernel.Load(new AutoMapperModule());
 

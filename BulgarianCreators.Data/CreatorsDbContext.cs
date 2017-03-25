@@ -1,10 +1,5 @@
 ﻿using BulgarianCreators.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
@@ -42,11 +37,6 @@ namespace BulgarianCreators.Data
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
             base.OnModelCreating(modelBuilder);
-        }
-
-        public override int SaveChanges()
-        {
-            return base.SaveChanges();
         }
     }
 }

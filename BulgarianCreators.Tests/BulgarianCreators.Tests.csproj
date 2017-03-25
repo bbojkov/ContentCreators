@@ -81,6 +81,8 @@
     <Compile Include="Data.Services\PostServiceTests\GetById_Should.cs" />
     <Compile Include="Data.Services\UserServiceTests\Constructor_Should.cs" />
     <Compile Include="Data.Services\UserServiceTests\GetUserById_Should.cs" />
+    <Compile Include="Data\CreatorsDbContextTests\Constructor_Should.cs" />
+    <Compile Include="Data\CreatorsDbContextTests\Create_Should.cs" />
     <Compile Include="Mocks\QueryableDbSetMock.cs" />
     <Compile Include="Models\CategoryModel\Constructor_Should.cs" />
     <Compile Include="Models\CommentModel\Constructor_Should.cs" />
@@ -107,6 +109,7 @@
       <Name>BulgarianCreators.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

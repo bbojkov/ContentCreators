@@ -1,6 +1,7 @@
 ﻿using BulgarianCreators.Data;
 using BulgarianCreators.Data.Services;
 using BulgarianCreators.Data.Services.Contracts;
+using BulgarianCreators.Models;
 using BulgarianCreators.Models.Factories;
 using Moq;
 using NUnit.Framework;
@@ -155,6 +156,31 @@ namespace BulgarianCreators.Tests.Data.Services.PostServiceTests
                     mockedCategoryService.Object,
                     mockedUserService.Object);
             });
+        }
+
+        [Test]
+        public void GetAndSetUserLikesData_Correctly()
+        {
+            // Arrange & Act
+            var user = new User() { Id = "1" };
+            var set = new HashSet<User> { user };
+
+            var post = new Post() { UserLikes = set };
+
+            // Assert
+            Assert.AreEqual(post.UserLikes.First().Id, user.Id);
+        }
+
+        [Test]
+        public void GetAndSetCommentsData_Correctly()
+        {
+            // Arrange & Act
+            var comment = new Comment() { Id = Guid.NewGuid() };
+            var set = new HashSet<Comment> { comment };
+            var post = new Post() { Comments = set };
+
+            // Assert
+            Assert.AreEqual(post.Comments.First().Id, comment.Id);
         }
     }
 }

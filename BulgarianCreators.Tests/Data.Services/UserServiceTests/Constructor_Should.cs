@@ -1,8 +1,11 @@
 ﻿using BulgarianCreators.Data;
 using BulgarianCreators.Data.Services;
+using BulgarianCreators.Models;
 using Moq;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BulgarianCreators.Tests.Data.Services.UserServiceTests
 {
@@ -30,6 +33,33 @@ namespace BulgarianCreators.Tests.Data.Services.UserServiceTests
             {
                 var userService = new UserService(mockedContext.Object);
             });
+        }
+
+        [Test]
+        public void ShouldGetAndSetLikedPostsData_Correctly()
+        {
+            // Arrange & Act
+            var post = new Post() { Id = Guid.NewGuid() };
+            var set = new HashSet<Post> { post };
+
+            var user = new User() { LikedPosts = set };
+
+            // Assert
+            Assert.AreEqual(user.LikedPosts.First().Id, post.Id);
+        }
+
+        [Test]
+        public void ShouldGetAndSetPostedByUserData_Correctly()
+        {
+            // Arrange & Act
+            // Arrange & Act
+            var post = new Post() { Id = Guid.NewGuid() };
+            var set = new HashSet<Post> { post };
+
+            var user = new User() { PostedByUser = set };
+
+            // Assert
+            Assert.AreEqual(user.PostedByUser.First().Id, post.Id);
         }
     }
 }
