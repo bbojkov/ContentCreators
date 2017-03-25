@@ -70,7 +70,7 @@ namespace BulgarianCreators.Web.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind(typeof(ICreatorsDbContext), typeof(ICreatorsDbSaveChangesContext))
-                .To<CreatorsDbContext>().InRequestScope();
+    .To<CreatorsDbContext>().InRequestScope();
 
             //kernel.Bind(typeof(ICreatorsDbSaveChangesContext))
             //    .To<CreatorsDbContext>().InRequestScope();
@@ -91,7 +91,6 @@ namespace BulgarianCreators.Web.App_Start
                 .SelectAllInterfaces()
                 .EndingWith("Factory")
                 .BindToFactory());
-
         }
     }
 }

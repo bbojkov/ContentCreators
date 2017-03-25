@@ -46,7 +46,7 @@ namespace BulgarianCreators.Data.Services
 
         public IQueryable<Post> GetAllPost()
         {
-            return this.dbContext.Posts.OrderBy(p => p.PostedOn);
+            return this.dbContext.Posts.OrderByDescending(p => p.PostedOn);
         }
 
         //public IQueryable<Post> GetAllPostsByUser(User user)
@@ -54,7 +54,7 @@ namespace BulgarianCreators.Data.Services
         //    return this.dbContext.Posts.Where(x => x.PostedBy == user);
         //}
         
-        public void CreateNewPost(string title, string imageUrl, string category, string content)
+        public void CreateNewPost(string title, string imageUrl, string category, string content, User postedBy)
         {
             try
             {
@@ -72,12 +72,13 @@ namespace BulgarianCreators.Data.Services
 
                 newPost.Content = content;
 
+                newPost.PostedBy = postedBy;
+
                 this.dbContext.Posts.Add(newPost);
-                this.dbContext.SaveChanges();
+                this.dbSaveChangesContext.SaveChanges();
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }

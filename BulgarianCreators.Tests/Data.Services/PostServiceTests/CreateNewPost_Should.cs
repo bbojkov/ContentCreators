@@ -56,7 +56,7 @@ namespace BulgarianCreators.Tests.Data.Services.PostServiceTests
             var postContent = "bla bla bla content";
 
             // Act
-            postService.CreateNewPost(postTitle, postImageUrl, postCategory, postContent);
+            postService.CreateNewPost(postTitle, postImageUrl, postCategory, postContent, user);
 
             // Assert
             Assert.That(postDbList.Count(), Is.EqualTo(1));
@@ -83,7 +83,7 @@ namespace BulgarianCreators.Tests.Data.Services.PostServiceTests
             // Act & Assert
             Assert.Throws<NullReferenceException>(() =>
             {
-                postService.CreateNewPost(null, null, null, null);
+                postService.CreateNewPost(null, null, null, null, null);
             });
         }
     }

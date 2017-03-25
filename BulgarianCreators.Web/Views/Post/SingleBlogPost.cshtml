@@ -33,11 +33,16 @@
                                     <span class="letter-dropcap"> @Model.Content.Substring(0, 1)</span>
                                     @Model.Content.Substring(1)
                                 </p>
+
+                                @*<input type="button"
+                                       class="btn btn-success"
+                                       value="Add" />*@
+
                                 <ul class="post-info pull-left">
                                     <li><i class="iline2-round27 text-primary"></i> <a href="#">@Model.PostedOn.ToShortDateString()</a></li>
                                     <li><i class="iline2-rectangular22 text-success"></i> <a href="#">@Model.Comments.Count</a></li>
                                     <li><i class="iline2-heart64"></i> <a href="#">@Model.UserLikes.Count</a></li>
-                                    <li><i class="iline1-gender2"></i><a href="#">@Model.PostedBy</a></li>
+                                    <li><i class="iline1-gender2"></i><a href="#">@Model.PostedBy.Email</a></li>
                                 </ul>
                                 <span class="clearboth">
                                 </span>

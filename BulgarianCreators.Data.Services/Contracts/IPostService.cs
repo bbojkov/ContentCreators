@@ -12,6 +12,6 @@ namespace BulgarianCreators.Data.Services.Contracts
 
         //IQueryable<Post> GetAllPostsByUser(User user);
 
-        void CreateNewPost(string title, string imageUrl, string category, string content);
+        void CreateNewPost(string title, string imageUrl, string category, string content, User postedBy);
     }
 }

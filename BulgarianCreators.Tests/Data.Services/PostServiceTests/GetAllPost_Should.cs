@@ -29,7 +29,7 @@ namespace BulgarianCreators.Tests.Data.Services.PostServiceTests
 
             var posts = GetAllPost();
 
-            var expectedResult = posts.OrderBy(x => x.PostedOn);
+            var expectedResult = posts.OrderByDescending(x => x.PostedOn);
             var mockedPost = QueryableDbSetMock.GetQueryableMockDbSet(posts);
 
             mockedDbContext.Setup(x => x.Posts).Returns(mockedPost);

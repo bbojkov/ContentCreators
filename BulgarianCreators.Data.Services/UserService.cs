@@ -26,9 +26,9 @@ namespace BulgarianCreators.Data.Services
         //    return this.dbContext.Users.SelectMany(x => x.LikedPosts);
         //}
 
-        //public IQueryable<Post> GetUserUploads()
-        //{
-        //    return this.dbContext.Users.SelectMany(x => x.PostedByUser);
-        //}
+        public IQueryable<Post> GetUserUploads()
+        {
+            return this.dbContext.Users.SelectMany(x => x.PostedByUser);
+        }
     }
 }
