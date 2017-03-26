@@ -39,7 +39,7 @@ namespace BulgarianCreators.Tests.Web.Controllers.PostControllerTests
                 mockedCategoryService.Object,
                 mockedAdapter.Object,
                 mockedUserService.Object);
-
+            
             controller.SingleBlogPost(post.Id);
 
             mockedPostService.Verify(x => x.GetById(post.Id), Times.Once);

@@ -21,5 +21,27 @@ namespace BulgarianCreators.Tests.Models.UserModel
             // Act && Assert
             Assert.AreEqual(country, user.Country);
         }
+
+        [Test]
+        public void AddPostToUserLikes()
+        {
+            // Arrange 
+            var posts = new List<Post>()
+            {
+                new Post() {Id = Guid.NewGuid() },
+                new Post() {Id = Guid.NewGuid() },
+                new Post() {Id = Guid.NewGuid() }
+            };
+
+            var user = new User() { Id = Guid.NewGuid().ToString() };
+
+            // Act
+            user.LikedPosts.Add(posts[0]);
+            user.LikedPosts.Add(posts[1]);
+            user.LikedPosts.Add(posts[2]);
+
+            // Assert
+            CollectionAssert.AreEqual(posts, user.LikedPosts);
+        }
     }
 }

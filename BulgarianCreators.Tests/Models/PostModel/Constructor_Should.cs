@@ -96,5 +96,27 @@ namespace BulgarianCreators.Tests.Models.PostModel
             // Act & Assert
             CollectionAssert.AreEqual(post.Comments, comments);
         }
+
+        [Test]
+        public void SetMultipleUserWhoLikedThePost()
+        {
+            // Arrange
+            var users = new List<User>()
+            {
+                new User() {Id = Guid.NewGuid().ToString() },
+                new User() {Id = Guid.NewGuid().ToString() },
+                new User() {Id = Guid.NewGuid().ToString() }
+            };
+
+            var post = new Post();
+
+            // Act
+            post.UserLikes.Add(users[0]);
+            post.UserLikes.Add(users[1]);
+            post.UserLikes.Add(users[2]);
+
+            // Assert
+            CollectionAssert.AreEqual(users, post.UserLikes);
+        }
     }
 }

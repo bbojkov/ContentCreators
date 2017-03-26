@@ -10,7 +10,7 @@ namespace BulgarianCreators.Data.Services.Contracts
 
         IQueryable<Post> GetAllPost();
 
-        void Comment(Guid postId, string userId, string commentBody);
+        void AddToFavorites(string userId, Guid postId);
 
         //IQueryable<Post> GetAllPostsByUser(User user);
 

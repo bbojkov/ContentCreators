@@ -23,10 +23,18 @@ namespace BulgarianCreators.Web
             );
 
             routes.MapRoute(
+                name: "Add to favorites",
+                url: "post/add/{id}",
+                defaults: new { controller = "Post", action = "Add", id = "" }
+            );
+
+            routes.MapRoute(
                 name: "Single Post",
                 url: "post/{id}",
                 defaults: new { controller = "Post", action = "SingleBlogPost" }
             );
+
+
 
             routes.MapRoute(
             name: "Default",

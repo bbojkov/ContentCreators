@@ -98,5 +98,20 @@ namespace BulgarianCreators.Web.Controllers
 
             return RedirectToAction("Index", "Post");
         }
+        
+        public ActionResult Add()
+        {
+            var url = Request.Url.AbsolutePath.Substring(10);
+
+            Guid postId;
+            Guid.TryParse(url, out postId);
+
+            var userId = User.Identity.GetUserId();
+
+            this.postService.AddToFavorites(userId, postId);
+
+            return RedirectToAction("Index", "Post");
+        }
+
     }
 }

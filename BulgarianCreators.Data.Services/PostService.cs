@@ -83,20 +83,14 @@ namespace BulgarianCreators.Data.Services
             }
         }
 
-        public void Comment(Guid postId, string userId, string commentBody)
+        public void AddToFavorites(string userId, Guid postId)
         {
             var user = this.userService.GetUserById(userId);
             var post = this.GetById(postId);
 
-            var comment = new Comment()
-            {
-                Id = Guid.NewGuid(),
-                PostedBy = user,
-                PostedOn = DateTime.Now,
-                commentBody = commentBody
-            };
+            user.LikedPosts.Add(post);
+            post.UserLikes.Add(user);
 
-            post.Comments.Add(comment);
             this.dbSaveChangesContext.SaveChanges();
         }
     }

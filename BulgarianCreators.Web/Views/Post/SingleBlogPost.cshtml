@@ -34,15 +34,13 @@
                                     @Model.Content.Substring(1)
                                 </p>
 
-                                @*<input type="button"
-                                    class="btn btn-success"
-                                    value="Add" />*@
-
                                 <ul class="post-info pull-left">
                                     <li><i class="iline2-round27 text-primary"></i> <a href="#">@Model.PostedOn.ToShortDateString()</a></li>
                                     <li><i class="iline2-rectangular22 text-success"></i> <a href="#">@Model.Comments.Count</a></li>
                                     <li><i class="iline2-heart64"></i> <a href="#">@Model.UserLikes.Count</a></li>
                                     <li><i class="iline1-gender2"></i><a href="#">@Model.PostedBy.Email</a></li>
+                                    <li><i class=".iline1-download49"></i><a href="/post/add/@Model.Id">Add To Favorites</a></li>
+
                                 </ul>
                                 <span class="clearboth">
                                 </span>
@@ -71,7 +69,7 @@
                                                 <div class="media-left">
                                                 </div>
                                                 <div class="media-body">
-                                                    <h4 class="media-heading text-primary">@comment.PostedBy Pesho<span class="pull-right small text-muted"><i>@comment.PostedOn</i></span></h4>
+                                                    <h4 class="media-heading text-primary">@comment.PostedBy.Email<span class="pull-right small text-muted"><i>@comment.PostedOn</i></span></h4>
                                                     <p>
                                                         @comment.commentBody
                                                     </p>
@@ -85,18 +83,18 @@
                                 {
                                     <h4 class="mar-top-md">Add a comment.</h4>
                                     <span class="line-sep-gray"></span>
-                                        <form class="form-horizontal mar-top-sm wow fadeIn" data-wow-duration="1s" data-wow-delay=".3s" method="post" action="/" name="commentForm" novalidate="">
-                                            <div class="row">
-                                                <div class="col-md-12 col-sm-12">
-                                                    <div class="form-group control-group">
-                                                        <textarea class="form-control" name="comment" placeholder="Comment* :" required="" data-validation-required-message="Please enter a Text."></textarea>
-                                                        <p class="help-block"></p>
-                                                    </div>
-                                                    <input type="submit" class="submit btn btn-primary pull-right" value="Post">
+                                    <form class="form-horizontal mar-top-sm wow fadeIn" data-wow-duration="1s" data-wow-delay=".3s" method="post" action="/" name="commentForm" novalidate="">
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12">
+                                                <div class="form-group control-group">
+                                                    <textarea class="form-control" name="comment" placeholder="Comment* :" required="" data-validation-required-message="Please enter a Text."></textarea>
+                                                    <p class="help-block"></p>
                                                 </div>
+                                                <input type="submit" class="submit btn btn-primary pull-right" value="Post">
                                             </div>
-                                            <!-- /.row -->
-                                        </form>
+                                        </div>
+                                        <!-- /.row -->
+                                    </form>
                                 }
                             </div>
                         </div>
