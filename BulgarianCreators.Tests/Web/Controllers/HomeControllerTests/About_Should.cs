@@ -5,14 +5,14 @@ using TestStack.FluentMVCTesting;
 namespace BulgarianCreators.Tests.Web.Controllers.HomeControllerTests
 {
     [TestFixture]
-    public class Index_Should
+    public class About_Should
     {
         [Test]
         public void ReturnDefaultView()
         {
             var hc = new HomeController();
 
-            hc.WithCallTo(x => x.Index()).ShouldRenderView("Index");
+            hc.WithCallTo(x => x.About()).ShouldRenderView("About");
         }
     }
 }

@@ -30,13 +30,5 @@ namespace BulgarianCreators.Tests.Data.CreatorsDbContextTests
             // Assert
             Assert.IsInstanceOf<ICreatorsDbContext>(context);
         }
-
-        [Test]
-        public void test()
-        {
-            var context = new CreatorsDbContext();
-
-            
-        }
     }
 }

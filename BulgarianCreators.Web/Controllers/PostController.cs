@@ -64,7 +64,6 @@ namespace BulgarianCreators.Web.Controllers
             return this.View(postViewModel);
         }
 
-
         public ActionResult Create()
         {
             return this.View();
@@ -80,7 +79,6 @@ namespace BulgarianCreators.Web.Controllers
 
                 var userId = User.Identity.GetUserId();
                 var user = this.userService.GetUserById(userId);
-
 
                 var post = new Post()
                 {
@@ -99,6 +97,32 @@ namespace BulgarianCreators.Web.Controllers
             return RedirectToAction("Index", "Post");
         }
         
+        //public ActionResult PostComment(CommentViewModel commentViewModel)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var userId = User.Identity.GetUserId();
+        //        var user = this.userService.GetUserById(userId);
+
+        //        var url = Request.Url.AbsolutePath.Substring(14);
+
+        //        Guid postId;
+        //        Guid.TryParse(url, out postId);
+
+        //        var comment = new Comment()
+        //        {
+        //            Id = Guid.NewGuid(),
+        //            PostedBy = user,
+        //            PostedOn = DateTime.Now,
+        //            commentBody = commentViewModel.commentBody
+        //        };
+
+        //        this.postService.PostComment(postId, comment);
+        //    }
+
+        //    return RedirectToAction("Index", "Post");
+        //}
+
         public ActionResult Add()
         {
             var url = Request.Url.AbsolutePath.Substring(10);

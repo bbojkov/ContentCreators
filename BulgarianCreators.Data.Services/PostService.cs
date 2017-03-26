@@ -93,5 +93,14 @@ namespace BulgarianCreators.Data.Services
 
             this.dbSaveChangesContext.SaveChanges();
         }
+
+        //public void PostComment(Guid postId, Comment comment)
+        //{
+        //    var post = this.GetById(postId);
+
+        //    post.Comments.Add(comment);
+
+        //    this.dbSaveChangesContext.SaveChanges();
+        //}
     }
 }

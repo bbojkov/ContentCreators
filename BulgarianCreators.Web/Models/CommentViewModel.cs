@@ -10,7 +10,5 @@ namespace BulgarianCreators.Web.Models
     public class CommentViewModel : IMapFrom<Comment>
     {
         public string commentBody { get; set; }
-
-        public string userId { get; set; }
     }
 }
