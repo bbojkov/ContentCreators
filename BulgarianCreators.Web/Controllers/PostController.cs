@@ -45,7 +45,7 @@ namespace BulgarianCreators.Web.Controllers
                 return this.View("Error");
             }
 
-            var postViewModel = this.mapperAdapter.Map<IEnumerable<PostViewModel>>(blogPosts);
+            var postViewModel = this.mapperAdapter.Map<IEnumerable<PostViewModel>>(blogPosts.ToList());
 
             return this.View(postViewModel);
         }
@@ -98,4 +98,5 @@ namespace BulgarianCreators.Web.Controllers
 
             return RedirectToAction("Index", "Post");
         }
+    }
 }

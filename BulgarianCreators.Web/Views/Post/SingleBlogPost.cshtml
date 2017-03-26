@@ -35,8 +35,8 @@
                                 </p>
 
                                 @*<input type="button"
-                                       class="btn btn-success"
-                                       value="Add" />*@
+                                    class="btn btn-success"
+                                    value="Add" />*@
 
                                 <ul class="post-info pull-left">
                                     <li><i class="iline2-round27 text-primary"></i> <a href="#">@Model.PostedOn.ToShortDateString()</a></li>
@@ -81,20 +81,23 @@
                                     }
                                 }
 
-                                <h4 class="mar-top-md">Add a comment.</h4>
-                                <span class="line-sep-gray"></span>
-                                <form class="form-horizontal mar-top-sm wow fadeIn" data-wow-duration="1s" data-wow-delay=".3s" method="post" action="/" name="commentForm" novalidate="">
-                                    <div class="row">
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="form-group control-group">
-                                                <textarea class="form-control" name="comment" placeholder="Comment* :" required="" data-validation-required-message="Please enter a Text."></textarea>
-                                                <p class="help-block"></p>
+                                @if (this.User.Identity.IsAuthenticated)
+                                {
+                                    <h4 class="mar-top-md">Add a comment.</h4>
+                                    <span class="line-sep-gray"></span>
+                                        <form class="form-horizontal mar-top-sm wow fadeIn" data-wow-duration="1s" data-wow-delay=".3s" method="post" action="/" name="commentForm" novalidate="">
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <div class="form-group control-group">
+                                                        <textarea class="form-control" name="comment" placeholder="Comment* :" required="" data-validation-required-message="Please enter a Text."></textarea>
+                                                        <p class="help-block"></p>
+                                                    </div>
+                                                    <input type="submit" class="submit btn btn-primary pull-right" value="Post">
+                                                </div>
                                             </div>
-                                            <input type="submit" class="submit btn btn-primary pull-right" value="Post">
-                                        </div>
-                                    </div>
-                                    <!-- /.row -->
-                                </form>
+                                            <!-- /.row -->
+                                        </form>
+                                }
                             </div>
                         </div>
                     </div>

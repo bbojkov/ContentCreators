@@ -6,13 +6,20 @@
     <h2 class="hidden">blog posts</h2>
     <!-- .container -->
     <div class="container">
+        @if (this.TempData["Notification"] != null)
+        {
+            <div class="alert alert-success">@this.TempData["Notification"]</div>
+        }
 
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 blog-main">
-                @*@Html.ActionLink("Add new post", "Create", "Post", new { @class= "btn btn-primary text-uppercase"})*@
-                <a class="btn btn-primary text-uppercase align-center" href="/create/post" role="button"> Add new post </a>
+        @if (this.User.Identity.IsAuthenticated)
+        {
+            <div class="row">
+                <div class="col-md-12 col-md-offset-5">
+                    <a class="btn btn-primary text-uppercase align-center" href="/create/post" role="button"> Add new post </a>
+                </div>
             </div>
-        </div>
+        }
+
         <!-- .row -->
         <div class="row">
             <!-- .col-md-12 -->
@@ -20,28 +27,28 @@
                 <!-- All blog posts -->
                 <div class="mar-top-lg row">
                     <div class="col-md-8 col-md-offset-2 blog-main">
-                        @foreach (var item in Model)
+                        @foreach (var post in Model)
                         {
                             <section class="blog-post-list no-padding">
                                 <h2 class="hidden">Last Posts</h2>
                                 <!-- .blog-post -->
                                 <article class="blog-post wow fadeInUp" data-wow-duration="1s">
                                     <span class="blog-date">
-                                        @item.PostedOn.Day.ToString()
-                                        <small class="blog-month">@item.PostedOn.ToString("MMM")</small>
+                                        @post.PostedOn.Day.ToString()
+                                        <small class="blog-month">@post.PostedOn.ToString("MMM")</small>
                                     </span>
                                     <span class="post-likes">
                                         <a class="iline2-heart64"></a>
-                                        <small class="post-count">@item.UserLikes.Count</small>
+                                        <small class="post-count">@post.UserLikes.Count</small>
                                     </span>
                                     <span class="post-views">
                                         <a class="iline2-rectangular22"></a>
-                                        <small class="post-count">@item.Comments.Count</small>
+                                        <small class="post-count">@post.Comments.Count</small>
                                     </span>
                                     <div class="blog-body">
                                         <header class="entry-header">
-                                            <a href="post/@item.Id">
-                                                @if (item.ImageUrl == string.Empty)
+                                            <a href="post/@post.Id">
+                                                @if (post.ImageUrl == string.Empty)
                                                 {
                                                     <img src="~/images/blog/detail-5.jpg" alt="post 2" class="img-responsive img-full" />
                                                     <div class="image-overlay">
@@ -54,7 +61,7 @@
                                                 }
                                                 else
                                                 {
-                                                    <img src="@item.ImageUrl" alt="post 2" class="img-responsive img-full" />
+                                                    <img src="@post.ImageUrl" alt="post 2" class="img-responsive img-full" />
                                                     <div class="image-overlay">
                                                         <p>
                                                             <span class="show-image">
@@ -65,11 +72,16 @@
                                                 }
                                             </a>
                                         </header>
-                                        <h4 class="text-success text-center text-uppercase mar-top-sm">@item.Title</h4>
+                                        <h4 class="text-success text-center text-uppercase mar-top-sm">@post.Title</h4>
                                         <p>
-                                            @item.Content
+                                            @if (post.Content.Length > 400)
+                                            {
+                                                @post.Content.Substring(0, 400)
+                                            }
+
+                                            @post.Content
                                         </p>
-                                        <a class="btn btn-primary text-uppercase" href="post/@item.Id" role="button"> Read more</a>
+                                        <a class="btn btn-primary text-uppercase" href="post/@post.Id" role="button"> Read more</a>
                                     </div>
                                 </article>
                                 <!-- /.blog-post -->
