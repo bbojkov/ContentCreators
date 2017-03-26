@@ -53,7 +53,7 @@ namespace BulgarianCreators.Data.Services
         //{
         //    return this.dbContext.Posts.Where(x => x.PostedBy == user);
         //}
-        
+
         public void CreateNewPost(string title, string imageUrl, string category, string content, User postedBy)
         {
             try
@@ -81,6 +81,23 @@ namespace BulgarianCreators.Data.Services
             {
                 throw ex;
             }
+        }
+
+        public void Comment(Guid postId, string userId, string commentBody)
+        {
+            var user = this.userService.GetUserById(userId);
+            var post = this.GetById(postId);
+
+            var comment = new Comment()
+            {
+                Id = Guid.NewGuid(),
+                PostedBy = user,
+                PostedOn = DateTime.Now,
+                commentBody = commentBody
+            };
+
+            post.Comments.Add(comment);
+            this.dbSaveChangesContext.SaveChanges();
         }
     }
 }

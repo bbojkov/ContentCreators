@@ -10,6 +10,8 @@ namespace BulgarianCreators.Data.Services.Contracts
 
         IQueryable<Post> GetAllPost();
 
+        void Comment(Guid postId, string userId, string commentBody);
+
         //IQueryable<Post> GetAllPostsByUser(User user);
 
         void CreateNewPost(string title, string imageUrl, string category, string content, User postedBy);

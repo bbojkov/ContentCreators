@@ -15,7 +15,9 @@ namespace BulgarianCreators.Tests.Web.Controllers.HomeControllerTests
         [Test]
         public void test()
         {
+            var hc = new HomeController();
 
+            hc.WithCallTo(x => x.Index()).ShouldRenderView("Index");
         }
     }
 }

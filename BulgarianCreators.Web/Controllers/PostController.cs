@@ -38,7 +38,7 @@ namespace BulgarianCreators.Web.Controllers
 
         public ActionResult Index()
         {
-            var blogPosts = this.postService.GetAllPost().ToList();
+            var blogPosts = this.postService.GetAllPost();
 
             if (blogPosts == null)
             {
@@ -93,10 +93,9 @@ namespace BulgarianCreators.Web.Controllers
                 };
 
                 this.postService.CreateNewPost(post.Title, post.ImageUrl, post.Category.CategoryName, post.Content, post.PostedBy);
+                this.TempData["Notification"] = "You've uploaded successfully a new post";
             }
 
-            this.TempData["Notification"] = "You've uploaded successfully a new post";
             return RedirectToAction("Index", "Post");
         }
-    }
 }

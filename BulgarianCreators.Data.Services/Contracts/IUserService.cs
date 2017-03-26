@@ -11,7 +11,7 @@ namespace BulgarianCreators.Data.Services.Contracts
     {
         User GetUserById(string userId);
 
-        IQueryable<Post> GetUserUploads();
+        //IQueryable<Post> GetUserUploads();
 
         //IQueryable<Post> GetUserLikes();
     }

@@ -248,6 +248,7 @@
     <Compile Include="Mapping\MapperAdapter.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AddPostViewModel.cs" />
+    <Compile Include="Models\CommentViewModel.cs" />
     <Compile Include="Models\PostViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
