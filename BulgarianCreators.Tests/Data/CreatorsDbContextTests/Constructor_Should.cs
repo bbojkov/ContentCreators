@@ -1,4 +1,5 @@
 ﻿using BulgarianCreators.Data;
+using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace BulgarianCreators.Tests.Data.CreatorsDbContextTests
         public void HaveParameterlessConstructor()
         {
             // Arrange & Act
-            var context = new CreatorsDbContext();
+            var context = new Mock<ICreatorsDbContext>();
 
             // Assert
             Assert.IsInstanceOf<CreatorsDbContext>(context);
@@ -25,7 +26,7 @@ namespace BulgarianCreators.Tests.Data.CreatorsDbContextTests
         public void ReturnAnInstanceOf_ICreatorsDbContext()
         {
             // Arrange & Act
-            var context = new CreatorsDbContext();
+            var context = new Mock<ICreatorsDbContext>();
 
             // Assert
             Assert.IsInstanceOf<ICreatorsDbContext>(context);
